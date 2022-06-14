@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <script async="false" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAYccXBYqfjf1o3Z_kBoOirRcTClPpzfxI" async defer></script>
+    
 
 </head>
 <body>
@@ -18,29 +19,64 @@
         
                 <form action="">
                     <div class="mt-3">
-                        <label for="name">Name :</label>
-                        <input  class="form-control" type="text" name="name" id="name">
-                    </div>
-                    <div class="mt-3">
                         <label for="name">PostCode :</label>
                         <input  class="form-control auto_search" type="text" name="postcode" id="postcode">
                     </div>
-                    <div class="mt-3">
-                        <label for="name">Address :</label>
-                        <input  class="form-control auto_town" type="text" name="Address" id="Address">
+                    <div class="row">
+                        <div class="mt-3 col-md-6">
+                            <label for="name">HOUSE NAME/NO.  :</label>
+                            <input  class="form-control auto_house" type="text" placeholder="HOUSE NAME/NO" name="Address" id="Address">
+                        </div>
+                        <div class="mt-3 col-md-6">
+                            <label for="name">PROPERTY NICK NAME  :</label>
+                            <input  class="form-control auto_addr_nickname" type="text" placeholder="PROPERTY NICK NAME" name="Address2" id="Address2">
+                        </div>
                     </div>
-                    <div class="mt-3">
-                        <label for="name">Address 2 :</label>
-                        <input  class="form-control auto_county" type="text" name="Address2" id="Address2">
+                   <div class="row">
+                    <div class="mt-3 col-md-6">
+                        <label for="name">STREET NAME :</label>
+                        <input  class="form-control auto_street_add" type="text" placeholder="STREET NAME" name="street" id="street">
                     </div>
-                    <div class="mt-3">
-                        <label for="name">Town :</label>
-                        <input  class="form-control auto_addr_line" type="text" name="Address3" id="Address3">
+                    <div class="mt-3 col-md-6">
+                        <label for="name">ADDRESS 2 :</label>
+                        <input  class="form-control auto_addr_line2" type="text" placeholder="ADDRESS 2" name="Address2" id="Address2">
                     </div>
-                    <div class="mt-3">
-                        <label for="name">City :</label>
-                        <input  class="form-control auto_addr_line3" type="text" name="Address4" id="Address4">
+                   </div>
+                   <div class="row">
+                    <div class="mt-3 col-md-6">
+                        <label for="name">ADDRESS 3 :</label>
+                        <input  class="form-control auto_addr_line3" type="text" placeholder="ADDRESS 3" name="Address3" id="Address3">
                     </div>
+                    <div class="mt-3 col-md-6">
+                        <label for="name">TOWN  :</label>
+                        <input  class="form-control auto_addr_town" type="text" placeholder="TOWN" name="town" id="town">
+                    </div>
+                   </div>
+                   <div class="row">
+                    <div class="mt-3 col-md-6">
+                        <label for="name">COUNTY :</label>
+                        <input  class="form-control auto_addr_county" type="text" placeholder="COUNTY" name="county" id="county">
+                    </div>
+                    <div class="mt-3 col-md-6">
+                        <label for="name">COUNTRY :</label>
+                        <input  class="form-control auto_addr_country" type="text" placeholder="COUNTRY" name="country" id="country">
+                    </div>
+                   </div>
+                   <div class="row">
+                    <div class="mt-3 col-md-6">
+                        <label for="name">UNIT NO :</label>
+                        <input  class="form-control auto_addr_country" type="text" placeholder="UNIT NO" name="unitNo" id="unitNo">
+                    </div>
+                   </div>
+                    <div class="col-md-12 col-lg-12">
+                        <div class="form-group">
+                          <input type="hidden" id="lat" name="latitude" value="{{old('latitude')}}"> <br/>
+                          <input type="hidden" id="long" name="longitude" value="{{old('longitude')}}"> <br/>
+                          <div class="map-field">
+                            <div id="map_canvas" style="500px; height: 250px;" ></div>
+                          </div>
+                        </div>
+                      </div>
                     <div class="mt-3">
                         <button  class="form-control btn btn-primary" type="submit">Submit </button>
                     </div>
@@ -49,34 +85,10 @@
             </div>
         </div>
     </div>
-
     <script src="https://cc-cdn.com/generic/scripts/v1/cc_c2a.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<script>
-    var cc_object = new clickToAddress({
-            accessToken: "{!! '674c3-d013e-970d7-0763d' !!}",
-            domMode: 'class', // Use names to find form elements
-            defaultCountry: 'gbr',
-            countryLanguage: 'en',
-            enabledCountries: ['gbr']
-        });
-
-        if ($(".auto_search")[0]){ // an class which available then only search address work
-            cc_object.attach({
-                search:		'auto_search', // class name should be here 
-                town:		'auto_town',
-                county:		'auto_county',
-                line_1:		'auto_addr_line',
-                line_2:		'auto_addr_line3',
-                postcode:	'auto_search'
-            }),
-            {}
-        }
-
-</script>
-
+    <script src="{{ asset('js/autoFileeMap.js') }}"></script>
 
 </body>
 </html>
