@@ -1,5 +1,5 @@
 var cc_object = new clickToAddress({
-    accessToken: "674c3-d013e-970d7-0763d",
+    accessToken: "4674c3-d013e-970d7-0763d4",
     domMode: 'class', // Use names to find form elements
     defaultCountry: 'gbr',
     countryLanguage: 'en',
@@ -11,7 +11,6 @@ if ($(".auto_search")[0]){ // an class which available then only search address 
         search:		'auto_search', // class name should be here 
         postcode:	'auto_search',
         town:		'auto_addr_town',
-        company:    'auto_house',
         county:		'auto_addr_county',
         line_1:		'auto_house',
         line_2:		'auto_addr_line2',
@@ -51,6 +50,7 @@ if ($(".auto_search")[0]){ // an class which available then only search address 
 
 var map;
   function getPostion(marker){
+      console.log("hello");
     infoWindow = new google.maps.InfoWindow;
       
       google.maps.event.addListener(marker, 'dragend', function (event) {

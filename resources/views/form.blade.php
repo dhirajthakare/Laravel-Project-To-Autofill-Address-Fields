@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script async="false" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAYccXBYqfjf1o3Z_kBoOirRcTClPpzfxI" async defer></script>
+    <script async="false" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=4AIzaSyAYccXBYqfjf1o3Z_kBoOirRcTClPpzfxI4" async defer></script>
     
 
 </head>
